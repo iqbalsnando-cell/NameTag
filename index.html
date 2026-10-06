@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kartu Identitas - Hendra Prayogi</title>
+
+    <title>Data Diri - Hendra Prayogi</title>
 
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
@@ -17,239 +18,386 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 30px;
+            padding: 25px;
+
             font-family: Arial, Helvetica, sans-serif;
-            background:
-                radial-gradient(circle at top, #dff7ff, transparent 40%),
-                linear-gradient(135deg, #0b6b78, #063c47);
-        }
 
-        /* Bingkai luar */
-        .ktp-wrapper {
-            width: 900px;
-            max-width: 100%;
-            padding: 12px;
-            border: 3px solid #d4a72c;
-            border-radius: 20px;
-            background: #f8edb8;
-            box-shadow:
-                0 20px 50px rgba(0, 0, 0, 0.35),
-                inset 0 0 0 3px #fff7ce;
-        }
-
-        /* Kartu utama */
-        .ktp {
-            position: relative;
-            overflow: hidden;
-            min-height: 520px;
-            padding: 30px 40px;
-            border: 2px solid #a98518;
-            border-radius: 12px;
             background:
-                linear-gradient(
-                    rgba(255, 255, 255, 0.75),
-                    rgba(235, 247, 218, 0.85)
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(255, 255, 255, 0.15),
+                    transparent 30%
                 ),
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 8px,
-                    rgba(27, 130, 110, 0.08) 9px,
-                    transparent 10px
+                linear-gradient(
+                    135deg,
+                    #063b42,
+                    #08766d,
+                    #0c4d50
                 );
         }
 
-        /* Ornamen */
-        .ktp::before {
-            content: "";
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            border: 30px solid rgba(16, 139, 120, 0.07);
-            top: -160px;
-            right: -100px;
+        /* =========================
+           BINGKAI LUAR
+        ========================= */
+
+        .card-wrapper {
+            width: 900px;
+            max-width: 100%;
+            padding: 10px;
+
+            background: linear-gradient(
+                135deg,
+                #f7e7a5,
+                #c99f2e,
+                #fff2b7,
+                #b78a1c
+            );
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.4);
         }
 
-        .ktp::after {
-            content: "IDENTITY";
+        /* =========================
+           KARTU
+        ========================= */
+
+        .card {
+            position: relative;
+            overflow: hidden;
+
+            min-height: 500px;
+
+            padding: 32px 42px;
+
+            border: 2px solid #92701c;
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    rgba(255, 255, 255, 0.78),
+                    rgba(231, 246, 220, 0.82)
+                );
+
+            box-shadow:
+                inset 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Ornamen watermark */
+
+        .card::before {
+            content: "";
+
             position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            right: -180px;
+            top: -180px;
+
+            border-radius: 50%;
+
+            border: 35px solid rgba(16, 120, 105, 0.07);
+        }
+
+        .card::after {
+            content: "IDENTITY";
+
+            position: absolute;
+
             right: 20px;
             bottom: 10px;
-            font-size: 70px;
+
+            font-size: 75px;
             font-weight: 900;
+
             color: rgba(0, 90, 80, 0.035);
-            transform: rotate(-20deg);
+
+            transform: rotate(-15deg);
+
+            pointer-events: none;
         }
 
-        /* Header */
+        /* =========================
+           HEADER
+        ========================= */
+
         .header {
             position: relative;
             z-index: 2;
+
             text-align: center;
-            margin-bottom: 25px;
+
+            margin-bottom: 28px;
         }
 
         .header h1 {
+            color: #155e55;
+
             font-size: 30px;
-            color: #155f55;
+            font-weight: 800;
+
             letter-spacing: 3px;
             text-transform: uppercase;
         }
 
         .header p {
-            margin-top: 5px;
-            font-size: 14px;
-            color: #755f18;
+            margin-top: 7px;
+
+            color: #7c631c;
+
+            font-size: 13px;
             font-weight: bold;
-            letter-spacing: 2px;
+
+            letter-spacing: 3px;
         }
 
-        .garis {
+        .line {
             width: 100%;
             height: 3px;
-            margin-top: 15px;
+
+            margin-top: 16px;
+
             background: linear-gradient(
                 90deg,
                 transparent,
-                #b38b20,
-                #247d70,
-                #b38b20,
+                #b18a22,
+                #247b70,
+                #b18a22,
                 transparent
             );
         }
 
-        /* Isi */
+        /* =========================
+           CONTENT
+        ========================= */
+
         .content {
             position: relative;
             z-index: 2;
+
             display: flex;
-            gap: 40px;
+
             align-items: flex-start;
+
+            gap: 45px;
         }
+
+        /* =========================
+           DATA DIRI
+        ========================= */
 
         .data {
             flex: 1;
+
+            padding-top: 8px;
         }
 
         .row {
             display: grid;
-            grid-template-columns: 130px 15px 1fr;
-            margin-bottom: 18px;
-            color: #243c38;
+
+            grid-template-columns:
+                130px
+                20px
+                1fr;
+
+            margin-bottom: 20px;
+
+            font-size: 16px;
+
+            color: #263c38;
         }
 
         .label {
+            color: #35675e;
+
             font-weight: bold;
-            color: #38655d;
         }
 
         .colon {
             font-weight: bold;
+
+            color: #35675e;
         }
 
         .value {
+            color: #172b27;
+
             font-weight: 600;
-            color: #1c2927;
         }
 
-        .nama {
-            font-size: 23px;
-            color: #125e53;
+        .name {
+            color: #0e6558;
+
+            font-size: 24px;
+
             font-weight: 800;
         }
 
-        /* Foto */
+        /* =========================
+           FOTO
+        ========================= */
+
         .photo-container {
             width: 190px;
+
             flex-shrink: 0;
+
             text-align: center;
         }
 
         .photo {
+            display: block;
+
             width: 180px;
             height: 220px;
+
             object-fit: cover;
-            border: 5px solid white;
-            outline: 2px solid #9d7b1d;
-            border-radius: 5px;
+
             background: #ddd;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+            border: 5px solid #ffffff;
+
+            outline: 2px solid #9d7b1d;
+
+            border-radius: 5px;
+
+            box-shadow:
+                0 8px 18px rgba(0, 0, 0, 0.25);
         }
 
         .photo-caption {
-            margin-top: 12px;
-            font-size: 12px;
-            font-weight: bold;
+            margin-top: 13px;
+
             color: #52736c;
-        }
 
-        /* Footer */
-        .footer {
-            position: relative;
-            z-index: 2;
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(110, 91, 25, 0.4);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+            font-size: 11px;
 
-        .status {
-            font-size: 12px;
-            color: #52736c;
-        }
-
-        .badge {
-            padding: 8px 18px;
-            border-radius: 30px;
-            color: white;
-            background: #167768;
-            font-size: 12px;
             font-weight: bold;
+
             letter-spacing: 1px;
         }
 
-        /* Responsive HP */
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            position: relative;
+            z-index: 2;
+
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            margin-top: 35px;
+
+            padding-top: 17px;
+
+            border-top:
+                1px solid
+                rgba(110, 91, 25, 0.4);
+        }
+
+        .footer-text {
+            color: #52736c;
+
+            font-size: 12px;
+        }
+
+        .badge {
+            padding: 9px 18px;
+
+            color: white;
+
+            background: #167768;
+
+            border-radius: 30px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            box-shadow:
+                0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* =========================
+           RESPONSIVE MOBILE
+        ========================= */
+
         @media (max-width: 650px) {
+
             body {
-                padding: 15px;
+                padding: 12px;
             }
 
-            .ktp {
+            .card-wrapper {
+                padding: 7px;
+            }
+
+            .card {
                 padding: 25px 20px;
+
+                min-height: auto;
             }
 
             .header h1 {
-                font-size: 22px;
+                font-size: 21px;
+
+                letter-spacing: 2px;
+            }
+
+            .header p {
+                font-size: 11px;
             }
 
             .content {
                 flex-direction: column-reverse;
+
                 align-items: center;
+
+                gap: 20px;
+            }
+
+            .photo-container {
+                margin-bottom: 5px;
             }
 
             .data {
                 width: 100%;
             }
 
-            .photo-container {
-                margin-bottom: 15px;
-            }
-
             .row {
-                grid-template-columns: 100px 12px 1fr;
+                grid-template-columns:
+                    95px
+                    15px
+                    1fr;
+
                 font-size: 14px;
+
+                margin-bottom: 17px;
             }
 
-            .nama {
+            .name {
                 font-size: 19px;
             }
 
             .footer {
                 flex-direction: column;
+
                 gap: 12px;
+
+                text-align: center;
+            }
+
+            .card::after {
+                font-size: 50px;
             }
         }
     </style>
@@ -257,52 +405,104 @@
 
 <body>
 
-    <div class="ktp-wrapper">
+    <main class="card-wrapper">
 
-        <div class="ktp">
+        <section class="card">
 
-            <div class="header">
+            <!-- HEADER -->
+            <header class="header">
+
                 <h1>Kartu Identitas Pelajar</h1>
-                <p>DATA DIRI</p>
-                <div class="garis"></div>
-            </div>
 
+                <p>DATA DIRI</p>
+
+                <div class="line"></div>
+
+            </header>
+
+
+            <!-- DATA DAN FOTO -->
             <div class="content">
 
+                <!-- DATA DIRI -->
                 <div class="data">
 
                     <div class="row">
-                        <div class="label">Nama</div>
-                        <div class="colon">:</div>
-                        <div class="value nama">Hendra Prayogi</div>
+
+                        <div class="label">
+                            Nama
+                        </div>
+
+                        <div class="colon">
+                            :
+                        </div>
+
+                        <div class="value name">
+                            Hendra Prayogi
+                        </div>
+
                     </div>
 
-                    <div class="row">
-                        <div class="label">Kelas</div>
-                        <div class="colon">:</div>
-                        <div class="value">XII</div>
-                    </div>
 
                     <div class="row">
-                        <div class="label">Jurusan</div>
-                        <div class="colon">:</div>
-                        <div class="value">TJKT</div>
+
+                        <div class="label">
+                            Kelas
+                        </div>
+
+                        <div class="colon">
+                            :
+                        </div>
+
+                        <div class="value">
+                            XII
+                        </div>
+
                     </div>
 
+
                     <div class="row">
-                        <div class="label">Status</div>
-                        <div class="colon">:</div>
-                        <div class="value">Pelajar</div>
+
+                        <div class="label">
+                            Jurusan
+                        </div>
+
+                        <div class="colon">
+                            :
+                        </div>
+
+                        <div class="value">
+                            TJKT
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="label">
+                            Status
+                        </div>
+
+                        <div class="colon">
+                            :
+                        </div>
+
+                        <div class="value">
+                            Pelajar
+                        </div>
+
                     </div>
 
                 </div>
 
+
+                <!-- FOTO -->
                 <div class="photo-container">
 
-                    <!-- GANTI URL DI BAWAH DENGAN LINK FOTO GITHUB -->
                     <img
                         class="photo"
-                        src="https://via.placeholder.com/180x220"
+                        src="media/hendra.jpg"
                         alt="Foto Hendra Prayogi"
                     >
 
@@ -314,9 +514,11 @@
 
             </div>
 
-            <div class="footer">
 
-                <div class="status">
+            <!-- FOOTER -->
+            <footer class="footer">
+
+                <div class="footer-text">
                     Kartu identitas data diri
                 </div>
 
@@ -324,11 +526,11 @@
                     TJKT • XII
                 </div>
 
-            </div>
+            </footer>
 
-        </div>
+        </section>
 
-    </div>
+    </main>
 
 </body>
 </html>
