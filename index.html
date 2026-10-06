@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Hendra Prayogi | IT Student ID</title>
+    <meta
+        name="description"
+        content="Personal IT Identity Card - Hendra Prayogi"
+    >
 
-    <!-- Google Fonts -->
+    <title>Hendra Prayogi | IT Identity Card</title>
+
+    <!-- =========================================
+         GOOGLE FONTS
+    ========================================== -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -15,7 +23,11 @@
         rel="stylesheet"
     >
 
-    <!-- QR Code Library -->
+
+    <!-- =========================================
+         QR CODE LIBRARY
+    ========================================== -->
+
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
     </script>
@@ -23,9 +35,9 @@
 
     <style>
 
-        /* =========================================
+        /* ==================================================
            RESET
-        ========================================= */
+        ================================================== */
 
         * {
             margin: 0;
@@ -34,9 +46,10 @@
         }
 
 
-        /* =========================================
-           BODY
-        ========================================= */
+        html {
+            scroll-behavior: smooth;
+        }
+
 
         body {
             min-height: 100vh;
@@ -53,54 +66,136 @@
 
             background:
                 radial-gradient(
-                    circle at 15% 20%,
-                    rgba(0, 217, 255, 0.12),
-                    transparent 30%
+                    circle at 15% 15%,
+                    rgba(0, 217, 255, 0.13),
+                    transparent 28%
                 ),
+
                 radial-gradient(
-                    circle at 85% 80%,
-                    rgba(37, 99, 235, 0.14),
+                    circle at 85% 85%,
+                    rgba(69, 75, 255, 0.14),
                     transparent 30%
                 ),
-                #050912;
+
+                linear-gradient(
+                    135deg,
+                    #030712,
+                    #07111f 50%,
+                    #020617
+                );
         }
 
 
-        /* =========================================
-           MAIN CARD
-        ========================================= */
+        /* ==================================================
+           AMBIENT LIGHT
+        ================================================== */
+
+        .ambient {
+            position: fixed;
+
+            width: 450px;
+            height: 450px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(0, 217, 255, 0.045);
+
+            filter: blur(80px);
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        .ambient.one {
+            top: -200px;
+            left: -150px;
+        }
+
+
+        .ambient.two {
+            right: -180px;
+            bottom: -180px;
+
+            background:
+                rgba(71, 85, 255, 0.055);
+        }
+
+
+        /* ==================================================
+           PAGE
+        ================================================== */
+
+        .page {
+            position: relative;
+
+            z-index: 2;
+
+            width: 100%;
+            max-width: 980px;
+        }
+
+
+        /* ==================================================
+           CARD
+        ================================================== */
 
         .id-card {
 
             position: relative;
 
-            width: 920px;
-
-            max-width: 100%;
-
             overflow: hidden;
 
-            border: 1px solid rgba(0, 217, 255, 0.25);
+            border:
+                1px solid
+                rgba(0, 217, 255, 0.22);
 
-            border-radius: 22px;
+            border-radius: 24px;
 
             background:
                 linear-gradient(
                     145deg,
-                    #111827 0%,
-                    #0b1220 50%,
-                    #070c16 100%
+                    rgba(17, 24, 39, 0.96),
+                    rgba(8, 15, 28, 0.97)
                 );
 
             box-shadow:
-                0 35px 80px rgba(0, 0, 0, 0.55),
-                0 0 50px rgba(0, 180, 255, 0.06);
+                0 40px 100px
+                rgba(0, 0, 0, 0.55),
+
+                0 0 60px
+                rgba(0, 174, 255, 0.05);
+
+            backdrop-filter:
+                blur(20px);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
         }
 
 
-        /* =========================================
-           TOP ACCENT
-        ========================================= */
+        /* Hover */
+
+        .id-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 45px 110px
+                rgba(0, 0, 0, 0.62),
+
+                0 0 70px
+                rgba(0, 174, 255, 0.09);
+        }
+
+
+        /* ==================================================
+           TOP LINE
+        ================================================== */
 
         .id-card::before {
 
@@ -119,15 +214,33 @@
                     90deg,
                     #00d9ff,
                     #008cff,
-                    #635bff,
+                    #685cff,
                     #00d9ff
                 );
+
+            background-size: 200% 100%;
+
+            animation:
+                gradientMove 5s linear infinite;
         }
 
 
-        /* =========================================
-           BACKGROUND GRID
-        ========================================= */
+        @keyframes gradientMove {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 200% 50%;
+            }
+
+        }
+
+
+        /* ==================================================
+           GRID BACKGROUND
+        ================================================== */
 
         .grid {
 
@@ -137,16 +250,17 @@
 
             pointer-events: none;
 
-            opacity: 0.055;
+            opacity: 0.045;
 
             background-image:
                 linear-gradient(
-                    rgba(0, 217, 255, 0.7) 1px,
+                    rgba(0, 217, 255, 0.8) 1px,
                     transparent 1px
                 ),
+
                 linear-gradient(
                     90deg,
-                    rgba(0, 217, 255, 0.7) 1px,
+                    rgba(0, 217, 255, 0.8) 1px,
                     transparent 1px
                 );
 
@@ -156,20 +270,60 @@
                 linear-gradient(
                     to bottom right,
                     black,
-                    transparent 70%
+                    transparent 75%
                 );
         }
 
 
-        /* =========================================
+        /* ==================================================
+           DECORATIVE CIRCLE
+        ================================================== */
+
+        .circle {
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            right: -170px;
+            top: 110px;
+
+            border:
+                1px solid
+                rgba(0, 217, 255, 0.07);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+        }
+
+
+        .circle::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 35px;
+
+            border:
+                1px dashed
+                rgba(0, 217, 255, 0.06);
+
+            border-radius: 50%;
+        }
+
+
+        /* ==================================================
            HEADER
-        ========================================= */
+        ================================================== */
 
         .header {
 
             position: relative;
 
-            z-index: 2;
+            z-index: 5;
 
             display: flex;
 
@@ -177,7 +331,8 @@
 
             align-items: center;
 
-            padding: 25px 32px 20px;
+            padding:
+                27px 34px 22px;
 
             border-bottom:
                 1px solid
@@ -185,37 +340,27 @@
         }
 
 
-        /* BRAND */
-
         .brand {
 
             display: flex;
 
             align-items: center;
 
-            gap: 13px;
+            gap: 14px;
         }
 
 
         .brand-icon {
 
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
 
             display: flex;
 
-            justify-content: center;
             align-items: center;
+            justify-content: center;
 
-            border-radius: 12px;
-
-            color: white;
-
-            font-family: "JetBrains Mono", monospace;
-
-            font-size: 16px;
-
-            font-weight: 700;
+            border-radius: 13px;
 
             background:
                 linear-gradient(
@@ -224,8 +369,18 @@
                     #006eff
                 );
 
+            color: white;
+
+            font-family:
+                "JetBrains Mono",
+                monospace;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
             box-shadow:
-                0 8px 25px
+                0 8px 28px
                 rgba(0, 145, 255, 0.2);
         }
 
@@ -242,19 +397,23 @@
 
         .brand-subtitle {
 
-            margin-top: 4px;
+            margin-top: 5px;
 
             color: #64748b;
 
-            font-family: "JetBrains Mono", monospace;
+            font-family:
+                "JetBrains Mono",
+                monospace;
 
-            font-size: 9px;
+            font-size: 8px;
 
             letter-spacing: 1.5px;
         }
 
 
-        /* STATUS */
+        /* ==================================================
+           STATUS
+        ================================================== */
 
         .status {
 
@@ -264,21 +423,25 @@
 
             gap: 8px;
 
-            padding: 8px 13px;
+            padding:
+                8px 13px;
 
-            border: 1px solid
-                rgba(0, 255, 170, 0.2);
+            border:
+                1px solid
+                rgba(0, 255, 170, 0.22);
 
             border-radius: 30px;
-
-            color: #5fffc5;
 
             background:
                 rgba(0, 255, 170, 0.035);
 
-            font-family: "JetBrains Mono", monospace;
+            color: #5fffc5;
 
-            font-size: 9px;
+            font-family:
+                "JetBrains Mono",
+                monospace;
+
+            font-size: 8px;
 
             font-weight: 600;
 
@@ -296,33 +459,54 @@
             background: #00e88b;
 
             box-shadow:
-                0 0 10px #00e88b;
+                0 0 12px #00e88b;
+
+            animation:
+                pulse 2s infinite;
         }
 
 
-        /* =========================================
-           MAIN CONTENT
-        ========================================= */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.45;
+            }
+
+        }
+
+
+        /* ==================================================
+           MAIN
+        ================================================== */
 
         .main {
 
             position: relative;
 
-            z-index: 2;
+            z-index: 4;
 
             display: grid;
 
-            grid-template-columns: 210px 1fr 90px;
+            grid-template-columns:
+                205px
+                minmax(0, 1fr)
+                100px;
 
             gap: 35px;
 
-            padding: 35px 32px;
+            padding:
+                36px 34px;
         }
 
 
-        /* =========================================
+        /* ==================================================
            PHOTO
-        ========================================= */
+        ================================================== */
 
         .photo-area {
 
@@ -343,38 +527,30 @@
 
             padding: 4px;
 
-            border-radius: 14px;
+            border-radius: 15px;
 
             background:
                 linear-gradient(
                     145deg,
                     #00d9ff,
                     #0077ff,
-                    #5d4dff
+                    #6253ff
                 );
 
             box-shadow:
-                0 15px 40px
-                rgba(0, 130, 255, 0.18);
+                0 18px 45px
+                rgba(0, 120, 255, 0.17);
+
+            transition:
+                transform 0.3s ease;
         }
 
 
-        .photo-frame::before {
+        .photo-frame:hover {
 
-            content: "";
-
-            position: absolute;
-
-            inset: 9px;
-
-            border: 1px solid
-                rgba(255, 255, 255, 0.25);
-
-            border-radius: 8px;
-
-            pointer-events: none;
-
-            z-index: 2;
+            transform:
+                translateY(-4px)
+                scale(1.015);
         }
 
 
@@ -387,9 +563,28 @@
 
             object-fit: cover;
 
-            border-radius: 10px;
+            border-radius: 11px;
 
-            background: #111827;
+            background:
+                #111827;
+        }
+
+
+        .photo-frame::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 9px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.28);
+
+            border-radius: 8px;
+
+            pointer-events: none;
         }
 
 
@@ -399,7 +594,9 @@
 
             color: #475569;
 
-            font-family: "JetBrains Mono", monospace;
+            font-family:
+                "JetBrains Mono",
+                monospace;
 
             font-size: 8px;
 
@@ -407,9 +604,9 @@
         }
 
 
-        /* =========================================
+        /* ==================================================
            PROFILE
-        ========================================= */
+        ================================================== */
 
         .profile {
 
@@ -418,6 +615,8 @@
             flex-direction: column;
 
             justify-content: center;
+
+            min-width: 0;
         }
 
 
@@ -427,9 +626,11 @@
 
             color: #00d9ff;
 
-            font-family: "JetBrains Mono", monospace;
+            font-family:
+                "JetBrains Mono",
+                monospace;
 
-            font-size: 10px;
+            font-size: 9px;
 
             font-weight: 600;
 
@@ -441,50 +642,43 @@
 
         .name {
 
-            margin-bottom: 7px;
+            margin-bottom: 6px;
 
-            font-size: clamp(28px, 5vw, 42px);
+            color: white;
+
+            font-size:
+                clamp(28px, 4vw, 43px);
 
             line-height: 1.1;
 
             font-weight: 800;
 
             letter-spacing: -1.5px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #ffffff,
-                    #a8ddff
-                );
-
-            -webkit-background-clip: text;
-
-            -webkit-text-fill-color: transparent;
         }
 
 
         .role {
 
-            margin-bottom: 25px;
+            margin-bottom: 22px;
 
             color: #94a3b8;
 
-            font-size: 12px;
+            font-size: 11px;
 
             font-weight: 500;
         }
 
 
-        /* =========================================
-           INFORMATION
-        ========================================= */
+        /* ==================================================
+           INFO GRID
+        ================================================== */
 
         .info-grid {
 
             display: grid;
 
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns:
+                1fr 1fr;
 
             gap: 10px;
         }
@@ -492,11 +686,12 @@
 
         .info {
 
-            padding: 13px 14px;
+            padding:
+                13px 14px;
 
             border:
                 1px solid
-                rgba(255, 255, 255, 0.07);
+                rgba(255, 255, 255, 0.065);
 
             border-radius: 9px;
 
@@ -504,18 +699,19 @@
                 rgba(255, 255, 255, 0.025);
 
             transition:
-                border-color 0.2s,
-                background 0.2s,
-                transform 0.2s;
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                background 0.2s ease;
         }
 
 
         .info:hover {
 
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
 
             border-color:
-                rgba(0, 217, 255, 0.25);
+                rgba(0, 217, 255, 0.22);
 
             background:
                 rgba(0, 217, 255, 0.035);
@@ -530,9 +726,11 @@
 
             color: #526176;
 
-            font-family: "JetBrains Mono", monospace;
+            font-family:
+                "JetBrains Mono",
+                monospace;
 
-            font-size: 8px;
+            font-size: 7px;
 
             letter-spacing: 1.5px;
 
@@ -544,7 +742,7 @@
 
             color: #e2e8f0;
 
-            font-size: 14px;
+            font-size: 13px;
 
             font-weight: 600;
         }
@@ -556,9 +754,59 @@
         }
 
 
-        /* =========================================
-           TECH LINE
-        ========================================= */
+        /* ==================================================
+           ABOUT ME
+        ================================================== */
+
+        .about {
+
+            margin-top: 13px;
+
+            padding:
+                13px 14px;
+
+            border-left:
+                2px solid
+                #00d9ff;
+
+            border-radius: 0 8px 8px 0;
+
+            background:
+                rgba(0, 217, 255, 0.025);
+        }
+
+
+        .about-title {
+
+            margin-bottom: 5px;
+
+            color: #64748b;
+
+            font-family:
+                "JetBrains Mono",
+                monospace;
+
+            font-size: 7px;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+
+        .about-text {
+
+            color: #a9b7c9;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+
+        /* ==================================================
+           TECH STACK
+        ================================================== */
 
         .tech-line {
 
@@ -566,18 +814,20 @@
 
             flex-wrap: wrap;
 
-            gap: 7px;
+            gap: 6px;
 
-            margin-top: 15px;
+            margin-top: 13px;
         }
 
 
         .tech {
 
-            padding: 6px 9px;
+            padding:
+                6px 9px;
 
-            border: 1px solid
-                rgba(0, 217, 255, 0.13);
+            border:
+                1px solid
+                rgba(0, 217, 255, 0.12);
 
             border-radius: 5px;
 
@@ -586,17 +836,19 @@
             background:
                 rgba(0, 217, 255, 0.035);
 
-            font-family: "JetBrains Mono", monospace;
+            font-family:
+                "JetBrains Mono",
+                monospace;
 
-            font-size: 8px;
+            font-size: 7px;
 
             letter-spacing: 0.5px;
         }
 
 
-        /* =========================================
+        /* ==================================================
            QR CODE
-        ========================================= */
+        ================================================== */
 
         .qr-area {
 
@@ -604,45 +856,57 @@
 
             flex-direction: column;
 
-            align-items: center;
-
             justify-content: center;
+
+            align-items: center;
         }
 
 
         .qr-box {
 
-            width: 82px;
-            height: 82px;
+            width: 86px;
+            height: 86px;
 
             display: flex;
 
-            justify-content: center;
             align-items: center;
+            justify-content: center;
 
-            padding: 7px;
+            padding: 8px;
 
-            border-radius: 8px;
+            border-radius: 9px;
 
             background: white;
 
             box-shadow:
-                0 10px 25px
+                0 12px 30px
                 rgba(0, 0, 0, 0.25);
+
+            transition:
+                transform 0.25s ease;
+        }
+
+
+        .qr-box:hover {
+
+            transform:
+                scale(1.05);
         }
 
 
         #qrcode {
 
-            width: 68px;
-            height: 68px;
+            width: 70px;
+            height: 70px;
         }
 
 
         #qrcode img {
 
-            width: 68px !important;
-            height: 68px !important;
+            display: block;
+
+            width: 70px !important;
+            height: 70px !important;
         }
 
 
@@ -652,27 +916,51 @@
 
             color: #526176;
 
-            font-family: "JetBrains Mono", monospace;
+            font-family:
+                "JetBrains Mono",
+                monospace;
 
             font-size: 7px;
 
-            text-align: center;
+            line-height: 1.6;
 
-            line-height: 1.5;
+            text-align: center;
 
             letter-spacing: 1px;
         }
 
 
-        /* =========================================
+        /* ==================================================
+           GITHUB
+        ================================================== */
+
+        .github {
+
+            margin-top: 8px;
+
+            color: #64748b;
+
+            font-family:
+                "JetBrains Mono",
+                monospace;
+
+            font-size: 6px;
+
+            text-align: center;
+
+            word-break: break-word;
+        }
+
+
+        /* ==================================================
            FOOTER
-        ========================================= */
+        ================================================== */
 
         .footer {
 
             position: relative;
 
-            z-index: 2;
+            z-index: 5;
 
             display: flex;
 
@@ -680,7 +968,8 @@
 
             align-items: center;
 
-            padding: 17px 32px;
+            padding:
+                17px 34px;
 
             border-top:
                 1px solid
@@ -692,15 +981,17 @@
 
             color: #475569;
 
-            font-family: "JetBrains Mono", monospace;
+            font-family:
+                "JetBrains Mono",
+                monospace;
 
-            font-size: 9px;
+            font-size: 8px;
 
             letter-spacing: 1px;
         }
 
 
-        .id-number span {
+        .id-number strong {
 
             color: #64748b;
         }
@@ -708,7 +999,8 @@
 
         .major-badge {
 
-            padding: 8px 14px;
+            padding:
+                8px 14px;
 
             border-radius: 6px;
 
@@ -721,9 +1013,11 @@
                     #00a6ff
                 );
 
-            font-family: "JetBrains Mono", monospace;
+            font-family:
+                "JetBrains Mono",
+                monospace;
 
-            font-size: 9px;
+            font-size: 8px;
 
             font-weight: 700;
 
@@ -735,33 +1029,179 @@
         }
 
 
-        /* =========================================
-           MOBILE
-        ========================================= */
+        /* ==================================================
+           BUTTONS
+        ================================================== */
 
-        @media (max-width: 750px) {
+        .actions {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+
+        .btn {
+
+            border: 1px solid
+                rgba(0, 217, 255, 0.2);
+
+            border-radius: 8px;
+
+            padding:
+                10px 16px;
+
+            color: #9deaff;
+
+            background:
+                rgba(0, 217, 255, 0.04);
+
+            font-family:
+                "JetBrains Mono",
+                monospace;
+
+            font-size: 9px;
+
+            cursor: pointer;
+
+            transition:
+                all 0.2s ease;
+        }
+
+
+        .btn:hover {
+
+            color: white;
+
+            background:
+                rgba(0, 217, 255, 0.1);
+
+            border-color:
+                rgba(0, 217, 255, 0.5);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .btn.primary {
+
+            border-color:
+                transparent;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #006eff,
+                    #00a6ff
+                );
+
+            color: white;
+        }
+
+
+        /* ==================================================
+           RESPONSIVE TABLET
+        ================================================== */
+
+        @media (max-width: 800px) {
 
             body {
-                padding: 15px;
-            }
-
-
-            .header {
-
-                padding: 22px;
-
+                padding: 20px;
             }
 
 
             .main {
 
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    175px
+                    1fr;
 
                 gap: 25px;
+            }
 
-                padding: 28px 22px;
 
-                text-align: center;
+            .qr-area {
+
+                display: none;
+            }
+
+
+            .photo-frame {
+
+                width: 160px;
+                height: 200px;
+            }
+        }
+
+
+        /* ==================================================
+           RESPONSIVE MOBILE
+        ================================================== */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 12px;
+            }
+
+
+            .id-card {
+
+                border-radius: 18px;
+            }
+
+
+            .header {
+
+                padding:
+                    21px 20px 18px;
+            }
+
+
+            .brand-icon {
+
+                width: 42px;
+                height: 42px;
+
+                font-size: 14px;
+            }
+
+
+            .brand-title {
+
+                font-size: 14px;
+            }
+
+
+            .brand-subtitle {
+
+                font-size: 6px;
+            }
+
+
+            .status {
+
+                display: none;
+            }
+
+
+            .main {
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                gap: 24px;
+
+                padding:
+                    27px 20px;
             }
 
 
@@ -775,32 +1215,31 @@
 
                 order: 2;
 
+                width: 100%;
+
                 align-items: center;
+
+                text-align: center;
             }
 
 
             .qr-area {
 
+                display: flex;
+
                 order: 3;
             }
 
 
-            .tech-line {
+            .name {
 
-                justify-content: center;
+                font-size: 30px;
             }
 
 
-            .qr-box {
+            .role {
 
-                width: 88px;
-                height: 88px;
-            }
-
-
-            .status {
-
-                display: none;
+                font-size: 10px;
             }
 
 
@@ -812,43 +1251,64 @@
             }
 
 
+            .tech-line {
+
+                justify-content: center;
+            }
+
+
+            .about {
+
+                text-align: left;
+
+                width: 100%;
+            }
+
+
             .footer {
 
                 flex-direction: column;
 
                 gap: 12px;
 
-                padding: 17px 22px;
+                padding:
+                    17px 20px;
 
                 text-align: center;
+            }
+
+
+            .actions {
+
+                flex-direction: column;
+
+                width: 100%;
+            }
+
+
+            .btn {
+
+                width: 100%;
             }
         }
 
 
-        @media (max-width: 420px) {
+        /* ==================================================
+           SMALL MOBILE
+        ================================================== */
 
-            .brand-title {
-
-                font-size: 14px;
-            }
-
-
-            .brand-subtitle {
-
-                font-size: 7px;
-            }
-
-
-            .brand-icon {
-
-                width: 40px;
-                height: 40px;
-            }
-
+        @media (max-width: 380px) {
 
             .name {
 
-                font-size: 28px;
+                font-size: 26px;
+            }
+
+
+            .photo-frame {
+
+                width: 145px;
+                height: 185px;
             }
 
 
@@ -856,287 +1316,499 @@
 
                 grid-template-columns: 1fr;
             }
+        }
 
 
-            .photo-frame {
+        /* ==================================================
+           PRINT MODE
+        ================================================== */
 
-                width: 160px;
-                height: 200px;
+        @media print {
+
+            @page {
+
+                size: A4 landscape;
+
+                margin: 0;
+            }
+
+
+            body {
+
+                min-height: auto;
+
+                padding: 0;
+
+                background: white;
+            }
+
+
+            .ambient,
+            .actions {
+
+                display: none !important;
+            }
+
+
+            .page {
+
+                width: 100%;
+
+                max-width: none;
+            }
+
+
+            .id-card {
+
+                width: 900px;
+
+                margin:
+                    40px auto;
+
+                transform: none !important;
+
+                box-shadow: none;
+
+                print-color-adjust: exact;
+
+                -webkit-print-color-adjust: exact;
             }
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-    <div class="id-card">
+    <!-- Ambient background -->
 
-        <!-- Background -->
-        <div class="grid"></div>
+    <div class="ambient one"></div>
+
+    <div class="ambient two"></div>
 
 
-        <!-- =====================================
-             HEADER
-        ====================================== -->
+    <div class="page">
 
-        <header class="header">
 
-            <div class="brand">
+        <!-- =============================================
+             ID CARD
+        ============================================== -->
 
-                <div class="brand-icon">
-                    &lt;/&gt;
-                </div>
+        <div class="id-card">
 
-                <div>
 
-                    <div class="brand-title">
-                        IT STUDENT ID
+            <!-- Background -->
+
+            <div class="grid"></div>
+
+            <div class="circle"></div>
+
+
+            <!-- =========================================
+                 HEADER
+            ========================================== -->
+
+            <header class="header">
+
+
+                <div class="brand">
+
+
+                    <div class="brand-icon">
+                        &lt;/&gt;
                     </div>
 
-                    <div class="brand-subtitle">
-                        TECHNOLOGY • NETWORK • SYSTEM
+
+                    <div>
+
+                        <div class="brand-title">
+                            IT STUDENT ID
+                        </div>
+
+                        <div class="brand-subtitle">
+                            TECHNOLOGY • NETWORK • SYSTEM
+                        </div>
+
                     </div>
 
-                </div>
-
-            </div>
-
-
-            <div class="status">
-
-                <span class="status-dot"></span>
-
-                ACTIVE STUDENT
-
-            </div>
-
-        </header>
-
-
-        <!-- =====================================
-             MAIN
-        ====================================== -->
-
-        <main class="main">
-
-
-            <!-- FOTO -->
-
-            <section class="photo-area">
-
-                <div class="photo-frame">
-
-                    <img
-                        src="media/hendra.jpg"
-                        alt="Foto Hendra Prayogi"
-                        class="photo"
-                    >
 
                 </div>
 
 
-                <div class="photo-label">
-                    PROFILE PHOTO
-                </div>
+                <div class="status">
 
-            </section>
+                    <span class="status-dot"></span>
 
+                    ACTIVE STUDENT
 
-
-            <!-- PROFILE -->
-
-            <section class="profile">
-
-                <div class="eyebrow">
-                    Student Profile
                 </div>
 
 
-                <h1 class="name">
-                    Hendra Prayogi
-                </h1>
+            </header>
 
 
-                <p class="role">
-                    IT Student • Computer Network & System
-                </p>
+
+            <!-- =========================================
+                 MAIN CONTENT
+            ========================================== -->
+
+            <main class="main">
 
 
-                <!-- INFO -->
+                <!-- =====================================
+                     PHOTO
+                ====================================== -->
 
-                <div class="info-grid">
+                <section class="photo-area">
 
 
-                    <div class="info">
+                    <div class="photo-frame">
 
-                        <span class="info-label">
-                            Class
+
+                        <img
+                            src="media/hendra.jpg"
+                            alt="Foto Hendra Prayogi"
+                            class="photo"
+                        >
+
+
+                    </div>
+
+
+                    <div class="photo-label">
+                        PROFILE PHOTO
+                    </div>
+
+
+                </section>
+
+
+
+                <!-- =====================================
+                     PROFILE
+                ====================================== -->
+
+                <section class="profile">
+
+
+                    <div class="eyebrow">
+                        Student Profile
+                    </div>
+
+
+                    <h1 class="name">
+                        Hendra Prayogi
+                    </h1>
+
+
+                    <p class="role">
+                        IT Student • Computer Network & System
+                    </p>
+
+
+
+                    <!-- INFORMATION -->
+
+                    <div class="info-grid">
+
+
+                        <div class="info">
+
+                            <span class="info-label">
+                                Class
+                            </span>
+
+                            <strong class="info-value">
+                                XII
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info">
+
+                            <span class="info-label">
+                                Major
+                            </span>
+
+                            <strong class="info-value cyan">
+                                TJKT
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info">
+
+                            <span class="info-label">
+                                Status
+                            </span>
+
+                            <strong class="info-value">
+                                Student
+                            </strong>
+
+                        </div>
+
+
+                        <div class="info">
+
+                            <span class="info-label">
+                                Field
+                            </span>
+
+                            <strong class="info-value">
+                                IT & Network
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- ABOUT -->
+
+                    <div class="about">
+
+                        <div class="about-title">
+                            About Me
+                        </div>
+
+
+                        <p class="about-text">
+
+                            IT student yang tertarik pada teknologi,
+                            jaringan komputer, sistem, dan pengembangan
+                            kemampuan di bidang teknologi informasi.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- TECH STACK -->
+
+                    <div class="tech-line">
+
+
+                        <span class="tech">
+                            NETWORK
                         </span>
 
-                        <strong class="info-value">
-                            XII
-                        </strong>
 
-                    </div>
-
-
-                    <div class="info">
-
-                        <span class="info-label">
-                            Major
+                        <span class="tech">
+                            SYSTEM
                         </span>
 
-                        <strong class="info-value cyan">
+
+                        <span class="tech">
+                            HTML
+                        </span>
+
+
+                        <span class="tech">
+                            CSS
+                        </span>
+
+
+                        <span class="tech">
+                            TECHNOLOGY
+                        </span>
+
+
+                        <span class="tech">
                             TJKT
-                        </strong>
-
-                    </div>
-
-
-                    <div class="info">
-
-                        <span class="info-label">
-                            Status
                         </span>
 
-                        <strong class="info-value">
-                            Student
-                        </strong>
 
                     </div>
 
 
-                    <div class="info">
+                </section>
 
-                        <span class="info-label">
-                            Field
-                        </span>
 
-                        <strong class="info-value">
-                            IT & Network
-                        </strong>
+
+                <!-- =====================================
+                     QR CODE
+                ====================================== -->
+
+                <section class="qr-area">
+
+
+                    <div class="qr-box">
+
+                        <div id="qrcode"></div>
 
                     </div>
 
+
+                    <div class="qr-label">
+                        SCAN TO<br>
+                        VIEW PROFILE
+                    </div>
+
+
+                    <div class="github">
+                        github.com/USERNAME
+                    </div>
+
+
+                </section>
+
+
+            </main>
+
+
+
+            <!-- =========================================
+                 FOOTER
+            ========================================== -->
+
+            <footer class="footer">
+
+
+                <div class="id-number">
+
+                    ID:
+                    <strong>
+                        TJKT-XII-001
+                    </strong>
+
+                    &nbsp;•&nbsp;
+
+                    2026
+
                 </div>
 
 
-                <!-- TECH -->
+                <div class="major-badge">
 
-                <div class="tech-line">
-
-                    <span class="tech">
-                        NETWORK
-                    </span>
-
-                    <span class="tech">
-                        SYSTEM
-                    </span>
-
-                    <span class="tech">
-                        TECHNOLOGY
-                    </span>
-
-                    <span class="tech">
-                        TJKT
-                    </span>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- QR CODE -->
-
-            <section class="qr-area">
-
-                <div class="qr-box">
-
-                    <div id="qrcode"></div>
+                    TJKT • XII
 
                 </div>
 
 
-                <div class="qr-label">
-                    SCAN<br>
-                    PROFILE
-                </div>
-
-            </section>
+            </footer>
 
 
-        </main>
+        </div>
 
 
-        <!-- =====================================
-             FOOTER
-        ====================================== -->
 
-        <footer class="footer">
+        <!-- =============================================
+             ACTION BUTTONS
+        ============================================== -->
 
-            <div class="id-number">
-
-                ID:
-                <span>
-                    TJKT-XII-001
-                </span>
-
-                &nbsp;•&nbsp;
-
-                2026
-
-            </div>
+        <div class="actions">
 
 
-            <div class="major-badge">
+            <button
+                class="btn primary"
+                onclick="window.print()"
+            >
+                🖨 CETAK ID CARD
+            </button>
 
-                TJKT • XII
 
-            </div>
+            <button
+                class="btn"
+                onclick="openGithub()"
+            >
+                ◉ BUKA GITHUB
+            </button>
 
-        </footer>
+
+        </div>
 
 
     </div>
 
 
 
-    <!-- =========================================
-         QR CODE SCRIPT
-    ========================================== -->
+    <!-- =============================================
+         JAVASCRIPT
+    ============================================== -->
 
     <script>
 
-        /*
-         * GANTI URL DI BAWAH
-         * dengan URL GitHub / portfolio Anda.
-         */
 
-        const profileURL =
-            "https://github.com/USERNAME";
+        /* =========================================
+           KONFIGURASI
+        ========================================== */
 
+        const githubUsername =
+            "USERNAME";
+
+
+        const githubURL =
+            "https://github.com/" + githubUsername;
+
+
+
+        /* =========================================
+           UPDATE GITHUB TEXT
+        ========================================== */
+
+        const githubText =
+            document.querySelector(".github");
+
+
+        githubText.textContent =
+            "github.com/" + githubUsername;
+
+
+
+        /* =========================================
+           GENERATE QR CODE
+        ========================================== */
 
         new QRCode(
-            document.getElementById("qrcode"),
-            {
-                text: profileURL,
 
-                width: 68,
-                height: 68,
+            document.getElementById("qrcode"),
+
+            {
+
+                text: githubURL,
+
+                width: 70,
+
+                height: 70,
 
                 colorDark: "#07111f",
+
                 colorLight: "#ffffff",
 
                 correctLevel:
                     QRCode.CorrectLevel.H
+
             }
+
         );
 
+
+
+        /* =========================================
+           OPEN GITHUB
+        ========================================== */
+
+        function openGithub() {
+
+            window.open(
+                githubURL,
+                "_blank"
+            );
+
+        }
+
+
     </script>
+
 
 </body>
 </html>
