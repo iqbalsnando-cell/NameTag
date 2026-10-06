@@ -4,10 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Hendra Prayogi | IT Student</title>
+    <title>Hendra Prayogi | IT Student ID</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- QR Code Library -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+    </script>
+
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap');
+
+        /* =========================================
+           RESET
+        ========================================= */
 
         * {
             margin: 0;
@@ -15,63 +33,77 @@
             box-sizing: border-box;
         }
 
+
+        /* =========================================
+           BODY
+        ========================================= */
+
         body {
             min-height: 100vh;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             padding: 30px;
 
             font-family: "Inter", sans-serif;
 
+            color: #f8fafc;
+
             background:
                 radial-gradient(
-                    circle at 20% 20%,
-                    rgba(0, 212, 255, 0.15),
+                    circle at 15% 20%,
+                    rgba(0, 217, 255, 0.12),
                     transparent 30%
                 ),
                 radial-gradient(
-                    circle at 80% 80%,
-                    rgba(0, 119, 255, 0.15),
+                    circle at 85% 80%,
+                    rgba(37, 99, 235, 0.14),
                     transparent 30%
                 ),
-                #070b14;
-
-            color: white;
+                #050912;
         }
 
-        /* =================================
-           CARD
-        ================================= */
 
-        .card {
+        /* =========================================
+           MAIN CARD
+        ========================================= */
+
+        .id-card {
+
             position: relative;
 
-            width: 900px;
+            width: 920px;
+
             max-width: 100%;
 
             overflow: hidden;
 
-            padding: 35px;
+            border: 1px solid rgba(0, 217, 255, 0.25);
 
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 20px;
+            border-radius: 22px;
 
             background:
                 linear-gradient(
-                    135deg,
-                    rgba(17, 25, 40, 0.97),
-                    rgba(8, 15, 28, 0.98)
+                    145deg,
+                    #111827 0%,
+                    #0b1220 50%,
+                    #070c16 100%
                 );
 
             box-shadow:
-                0 30px 80px rgba(0, 0, 0, 0.55),
-                0 0 40px rgba(0, 174, 255, 0.08);
+                0 35px 80px rgba(0, 0, 0, 0.55),
+                0 0 50px rgba(0, 180, 255, 0.06);
         }
 
-        /* garis cyan di bagian atas */
 
-        .card::before {
+        /* =========================================
+           TOP ACCENT
+        ========================================= */
+
+        .id-card::before {
+
             content: "";
 
             position: absolute;
@@ -86,23 +118,37 @@
                 linear-gradient(
                     90deg,
                     #00d9ff,
-                    #0077ff,
-                    #7b61ff
+                    #008cff,
+                    #635bff,
+                    #00d9ff
                 );
         }
 
-        /* dekorasi grid */
 
-        .grid-bg {
+        /* =========================================
+           BACKGROUND GRID
+        ========================================= */
+
+        .grid {
+
             position: absolute;
 
             inset: 0;
 
-            opacity: 0.08;
+            pointer-events: none;
+
+            opacity: 0.055;
 
             background-image:
-                linear-gradient(#00d9ff 1px, transparent 1px),
-                linear-gradient(90deg, #00d9ff 1px, transparent 1px);
+                linear-gradient(
+                    rgba(0, 217, 255, 0.7) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(0, 217, 255, 0.7) 1px,
+                    transparent 1px
+                );
 
             background-size: 35px 35px;
 
@@ -112,44 +158,64 @@
                     black,
                     transparent 70%
                 );
-
-            pointer-events: none;
         }
 
-        /* =================================
+
+        /* =========================================
            HEADER
-        ================================= */
+        ========================================= */
 
         .header {
+
             position: relative;
+
             z-index: 2;
 
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
 
-            padding-bottom: 22px;
+            padding: 25px 32px 20px;
 
             border-bottom:
                 1px solid
-                rgba(255, 255, 255, 0.08);
+                rgba(255, 255, 255, 0.07);
         }
 
+
+        /* BRAND */
+
         .brand {
+
             display: flex;
+
             align-items: center;
+
             gap: 13px;
         }
 
-        .logo {
-            width: 45px;
-            height: 45px;
+
+        .brand-icon {
+
+            width: 46px;
+            height: 46px;
 
             display: flex;
-            align-items: center;
+
             justify-content: center;
+            align-items: center;
 
             border-radius: 12px;
+
+            color: white;
+
+            font-family: "JetBrains Mono", monospace;
+
+            font-size: 16px;
+
+            font-weight: 700;
 
             background:
                 linear-gradient(
@@ -158,59 +224,70 @@
                     #006eff
                 );
 
-            color: white;
+            box-shadow:
+                0 8px 25px
+                rgba(0, 145, 255, 0.2);
+        }
 
-            font-family: "JetBrains Mono", monospace;
-            font-weight: 700;
+
+        .brand-title {
+
             font-size: 17px;
 
-            box-shadow:
-                0 0 25px rgba(0, 174, 255, 0.25);
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
         }
 
-        .brand h1 {
-            font-size: 18px;
 
-            font-weight: 700;
+        .brand-subtitle {
 
-            letter-spacing: 1px;
-        }
+            margin-top: 4px;
 
-        .brand p {
-            margin-top: 3px;
-
-            color: #7e91a8;
-
-            font-size: 11px;
+            color: #64748b;
 
             font-family: "JetBrains Mono", monospace;
 
-            letter-spacing: 1px;
+            font-size: 9px;
+
+            letter-spacing: 1.5px;
         }
 
+
+        /* STATUS */
+
         .status {
+
             display: flex;
+
             align-items: center;
-            gap: 7px;
 
-            padding: 7px 12px;
+            gap: 8px;
 
-            border: 1px solid rgba(0, 255, 170, 0.25);
+            padding: 8px 13px;
 
-            border-radius: 20px;
+            border: 1px solid
+                rgba(0, 255, 170, 0.2);
 
-            background: rgba(0, 255, 170, 0.05);
+            border-radius: 30px;
 
             color: #5fffc5;
 
-            font-size: 10px;
+            background:
+                rgba(0, 255, 170, 0.035);
 
             font-family: "JetBrains Mono", monospace;
+
+            font-size: 9px;
+
+            font-weight: 600;
 
             letter-spacing: 1px;
         }
 
+
         .status-dot {
+
             width: 7px;
             height: 7px;
 
@@ -222,28 +299,33 @@
                 0 0 10px #00e88b;
         }
 
-        /* =================================
-           CONTENT
-        ================================= */
 
-        .content {
+        /* =========================================
+           MAIN CONTENT
+        ========================================= */
+
+        .main {
+
             position: relative;
+
             z-index: 2;
 
             display: grid;
 
-            grid-template-columns: 190px 1fr;
+            grid-template-columns: 210px 1fr 90px;
 
-            gap: 40px;
+            gap: 35px;
 
-            padding: 35px 0;
+            padding: 35px 32px;
         }
 
-        /* =================================
-           FOTO
-        ================================= */
 
-        .photo-section {
+        /* =========================================
+           PHOTO
+        ========================================= */
+
+        .photo-area {
+
             display: flex;
 
             flex-direction: column;
@@ -251,31 +333,57 @@
             align-items: center;
         }
 
+
         .photo-frame {
+
             position: relative;
 
             width: 175px;
-            height: 215px;
+            height: 220px;
 
-            padding: 5px;
+            padding: 4px;
 
             border-radius: 14px;
 
             background:
                 linear-gradient(
-                    135deg,
+                    145deg,
                     #00d9ff,
                     #0077ff,
-                    #754cff
+                    #5d4dff
                 );
 
             box-shadow:
-                0 15px 40px rgba(0, 119, 255, 0.2);
+                0 15px 40px
+                rgba(0, 130, 255, 0.18);
         }
 
+
+        .photo-frame::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 9px;
+
+            border: 1px solid
+                rgba(255, 255, 255, 0.25);
+
+            border-radius: 8px;
+
+            pointer-events: none;
+
+            z-index: 2;
+        }
+
+
         .photo {
+
             width: 100%;
             height: 100%;
+
+            display: block;
 
             object-fit: cover;
 
@@ -284,23 +392,27 @@
             background: #111827;
         }
 
+
         .photo-label {
+
             margin-top: 13px;
 
-            color: #64748b;
-
-            font-size: 9px;
+            color: #475569;
 
             font-family: "JetBrains Mono", monospace;
+
+            font-size: 8px;
 
             letter-spacing: 2px;
         }
 
-        /* =================================
-           DATA
-        ================================= */
 
-        .data {
+        /* =========================================
+           PROFILE
+        ========================================= */
+
+        .profile {
+
             display: flex;
 
             flex-direction: column;
@@ -308,22 +420,28 @@
             justify-content: center;
         }
 
-        .small-title {
+
+        .eyebrow {
+
             margin-bottom: 7px;
 
             color: #00d9ff;
 
             font-family: "JetBrains Mono", monospace;
 
-            font-size: 11px;
+            font-size: 10px;
+
+            font-weight: 600;
 
             letter-spacing: 2px;
 
             text-transform: uppercase;
         }
 
+
         .name {
-            margin-bottom: 25px;
+
+            margin-bottom: 7px;
 
             font-size: clamp(28px, 5vw, 42px);
 
@@ -331,119 +449,247 @@
 
             font-weight: 800;
 
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
 
             background:
                 linear-gradient(
                     90deg,
                     #ffffff,
-                    #a9ddff
+                    #a8ddff
                 );
 
             -webkit-background-clip: text;
+
             -webkit-text-fill-color: transparent;
         }
 
+
+        .role {
+
+            margin-bottom: 25px;
+
+            color: #94a3b8;
+
+            font-size: 12px;
+
+            font-weight: 500;
+        }
+
+
+        /* =========================================
+           INFORMATION
+        ========================================= */
+
         .info-grid {
+
             display: grid;
 
             grid-template-columns: 1fr 1fr;
 
-            gap: 14px;
+            gap: 10px;
         }
 
+
         .info {
-            padding: 15px;
+
+            padding: 13px 14px;
 
             border:
                 1px solid
                 rgba(255, 255, 255, 0.07);
 
-            border-radius: 10px;
+            border-radius: 9px;
 
             background:
                 rgba(255, 255, 255, 0.025);
+
+            transition:
+                border-color 0.2s,
+                background 0.2s,
+                transform 0.2s;
         }
 
-        .info span {
+
+        .info:hover {
+
+            transform: translateY(-2px);
+
+            border-color:
+                rgba(0, 217, 255, 0.25);
+
+            background:
+                rgba(0, 217, 255, 0.035);
+        }
+
+
+        .info-label {
+
             display: block;
 
-            margin-bottom: 6px;
+            margin-bottom: 5px;
 
-            color: #64748b;
-
-            font-size: 9px;
+            color: #526176;
 
             font-family: "JetBrains Mono", monospace;
+
+            font-size: 8px;
 
             letter-spacing: 1.5px;
 
             text-transform: uppercase;
         }
 
-        .info strong {
-            color: #e5edf7;
 
-            font-size: 15px;
+        .info-value {
+
+            color: #e2e8f0;
+
+            font-size: 14px;
 
             font-weight: 600;
         }
 
-        .tjkt {
-            color: #00d9ff !important;
+
+        .cyan {
+
+            color: #00d9ff;
         }
 
-        /* =================================
-           TECH TAGS
-        ================================= */
 
-        .tags {
+        /* =========================================
+           TECH LINE
+        ========================================= */
+
+        .tech-line {
+
             display: flex;
 
             flex-wrap: wrap;
 
-            gap: 8px;
+            gap: 7px;
 
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
-        .tag {
-            padding: 7px 11px;
 
-            border: 1px solid rgba(0, 217, 255, 0.15);
+        .tech {
 
-            border-radius: 6px;
+            padding: 6px 9px;
 
-            background: rgba(0, 217, 255, 0.04);
+            border: 1px solid
+                rgba(0, 217, 255, 0.13);
 
-            color: #83dfff;
+            border-radius: 5px;
+
+            color: #7ddfff;
+
+            background:
+                rgba(0, 217, 255, 0.035);
 
             font-family: "JetBrains Mono", monospace;
 
-            font-size: 9px;
+            font-size: 8px;
+
+            letter-spacing: 0.5px;
         }
 
-        /* =================================
+
+        /* =========================================
+           QR CODE
+        ========================================= */
+
+        .qr-area {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .qr-box {
+
+            width: 82px;
+            height: 82px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 7px;
+
+            border-radius: 8px;
+
+            background: white;
+
+            box-shadow:
+                0 10px 25px
+                rgba(0, 0, 0, 0.25);
+        }
+
+
+        #qrcode {
+
+            width: 68px;
+            height: 68px;
+        }
+
+
+        #qrcode img {
+
+            width: 68px !important;
+            height: 68px !important;
+        }
+
+
+        .qr-label {
+
+            margin-top: 10px;
+
+            color: #526176;
+
+            font-family: "JetBrains Mono", monospace;
+
+            font-size: 7px;
+
+            text-align: center;
+
+            line-height: 1.5;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================
            FOOTER
-        ================================= */
+        ========================================= */
 
         .footer {
+
             position: relative;
+
             z-index: 2;
 
             display: flex;
 
             justify-content: space-between;
+
             align-items: center;
 
-            padding-top: 18px;
+            padding: 17px 32px;
 
             border-top:
                 1px solid
-                rgba(255, 255, 255, 0.08);
+                rgba(255, 255, 255, 0.07);
         }
 
-        .code {
+
+        .id-number {
+
             color: #475569;
 
             font-family: "JetBrains Mono", monospace;
@@ -453,122 +699,211 @@
             letter-spacing: 1px;
         }
 
-        .badge {
+
+        .id-number span {
+
+            color: #64748b;
+        }
+
+
+        .major-badge {
+
             padding: 8px 14px;
 
             border-radius: 6px;
 
+            color: white;
+
             background:
                 linear-gradient(
                     135deg,
-                    #0077ff,
+                    #006eff,
                     #00a6ff
                 );
 
-            color: white;
-
             font-family: "JetBrains Mono", monospace;
 
-            font-size: 10px;
+            font-size: 9px;
 
-            font-weight: 600;
+            font-weight: 700;
 
             letter-spacing: 1px;
 
             box-shadow:
-                0 5px 20px rgba(0, 119, 255, 0.2);
+                0 6px 20px
+                rgba(0, 119, 255, 0.18);
         }
 
-        /* =================================
-           MOBILE
-        ================================= */
 
-        @media (max-width: 650px) {
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 750px) {
 
             body {
                 padding: 15px;
             }
 
-            .card {
-                padding: 22px;
-            }
 
             .header {
-                align-items: flex-start;
+
+                padding: 22px;
+
             }
 
-            .brand h1 {
-                font-size: 15px;
-            }
 
-            .status {
-                display: none;
-            }
+            .main {
 
-            .content {
                 grid-template-columns: 1fr;
 
-                gap: 28px;
+                gap: 25px;
+
+                padding: 28px 22px;
 
                 text-align: center;
             }
 
-            .photo-section {
-                order: -1;
+
+            .photo-area {
+
+                order: 1;
             }
 
-            .data {
+
+            .profile {
+
+                order: 2;
+
                 align-items: center;
             }
 
-            .name {
-                font-size: 30px;
 
-                margin-bottom: 20px;
+            .qr-area {
+
+                order: 3;
             }
 
+
+            .tech-line {
+
+                justify-content: center;
+            }
+
+
+            .qr-box {
+
+                width: 88px;
+                height: 88px;
+            }
+
+
+            .status {
+
+                display: none;
+            }
+
+
             .info-grid {
+
                 width: 100%;
 
                 text-align: left;
             }
 
-            .tags {
-                justify-content: center;
-            }
 
             .footer {
+
                 flex-direction: column;
 
                 gap: 12px;
+
+                padding: 17px 22px;
+
+                text-align: center;
+            }
+        }
+
+
+        @media (max-width: 420px) {
+
+            .brand-title {
+
+                font-size: 14px;
+            }
+
+
+            .brand-subtitle {
+
+                font-size: 7px;
+            }
+
+
+            .brand-icon {
+
+                width: 40px;
+                height: 40px;
+            }
+
+
+            .name {
+
+                font-size: 28px;
+            }
+
+
+            .info-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .photo-frame {
+
+                width: 160px;
+                height: 200px;
             }
         }
 
     </style>
 </head>
 
+
 <body>
 
-    <div class="card">
 
-        <div class="grid-bg"></div>
+    <div class="id-card">
 
-        <!-- HEADER -->
+        <!-- Background -->
+        <div class="grid"></div>
+
+
+        <!-- =====================================
+             HEADER
+        ====================================== -->
+
         <header class="header">
 
             <div class="brand">
 
-                <div class="logo">
+                <div class="brand-icon">
                     &lt;/&gt;
                 </div>
 
                 <div>
-                    <h1>IT STUDENT ID</h1>
 
-                    <p>TECHNOLOGY • NETWORK • SYSTEM</p>
+                    <div class="brand-title">
+                        IT STUDENT ID
+                    </div>
+
+                    <div class="brand-subtitle">
+                        TECHNOLOGY • NETWORK • SYSTEM
+                    </div>
+
                 </div>
 
             </div>
+
 
             <div class="status">
 
@@ -581,48 +916,67 @@
         </header>
 
 
-        <!-- CONTENT -->
-        <main class="content">
+        <!-- =====================================
+             MAIN
+        ====================================== -->
+
+        <main class="main">
+
 
             <!-- FOTO -->
-            <div class="photo-section">
+
+            <section class="photo-area">
 
                 <div class="photo-frame">
 
                     <img
-                        class="photo"
                         src="media/hendra.jpg"
                         alt="Foto Hendra Prayogi"
+                        class="photo"
                     >
 
                 </div>
+
 
                 <div class="photo-label">
                     PROFILE PHOTO
                 </div>
 
-            </div>
+            </section>
 
 
-            <!-- DATA DIRI -->
-            <div class="data">
 
-                <div class="small-title">
+            <!-- PROFILE -->
+
+            <section class="profile">
+
+                <div class="eyebrow">
                     Student Profile
                 </div>
 
-                <h2 class="name">
-                    Hendra Prayogi
-                </h2>
 
+                <h1 class="name">
+                    Hendra Prayogi
+                </h1>
+
+
+                <p class="role">
+                    IT Student • Computer Network & System
+                </p>
+
+
+                <!-- INFO -->
 
                 <div class="info-grid">
 
+
                     <div class="info">
 
-                        <span>Class</span>
+                        <span class="info-label">
+                            Class
+                        </span>
 
-                        <strong>
+                        <strong class="info-value">
                             XII
                         </strong>
 
@@ -631,9 +985,11 @@
 
                     <div class="info">
 
-                        <span>Major</span>
+                        <span class="info-label">
+                            Major
+                        </span>
 
-                        <strong class="tjkt">
+                        <strong class="info-value cyan">
                             TJKT
                         </strong>
 
@@ -642,10 +998,12 @@
 
                     <div class="info">
 
-                        <span>Status</span>
+                        <span class="info-label">
+                            Status
+                        </span>
 
-                        <strong>
-                            Pelajar
+                        <strong class="info-value">
+                            Student
                         </strong>
 
                     </div>
@@ -653,9 +1011,11 @@
 
                     <div class="info">
 
-                        <span>Field</span>
+                        <span class="info-label">
+                            Field
+                        </span>
 
-                        <strong>
+                        <strong class="info-value">
                             IT & Network
                         </strong>
 
@@ -664,46 +1024,119 @@
                 </div>
 
 
-                <!-- TECH TAG -->
-                <div class="tags">
+                <!-- TECH -->
 
-                    <div class="tag">
-                        #NETWORK
-                    </div>
+                <div class="tech-line">
 
-                    <div class="tag">
-                        #TECHNOLOGY
-                    </div>
+                    <span class="tech">
+                        NETWORK
+                    </span>
 
-                    <div class="tag">
-                        #TJKT
-                    </div>
+                    <span class="tech">
+                        SYSTEM
+                    </span>
 
-                    <div class="tag">
-                        #ITSTUDENT
-                    </div>
+                    <span class="tech">
+                        TECHNOLOGY
+                    </span>
+
+                    <span class="tech">
+                        TJKT
+                    </span>
 
                 </div>
 
-            </div>
+            </section>
+
+
+
+            <!-- QR CODE -->
+
+            <section class="qr-area">
+
+                <div class="qr-box">
+
+                    <div id="qrcode"></div>
+
+                </div>
+
+
+                <div class="qr-label">
+                    SCAN<br>
+                    PROFILE
+                </div>
+
+            </section>
+
 
         </main>
 
 
-        <!-- FOOTER -->
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
         <footer class="footer">
 
-            <div class="code">
-                ID // TJKT-XII // 2026
+            <div class="id-number">
+
+                ID:
+                <span>
+                    TJKT-XII-001
+                </span>
+
+                &nbsp;•&nbsp;
+
+                2026
+
             </div>
 
-            <div class="badge">
+
+            <div class="major-badge">
+
                 TJKT • XII
+
             </div>
 
         </footer>
 
+
     </div>
+
+
+
+    <!-- =========================================
+         QR CODE SCRIPT
+    ========================================== -->
+
+    <script>
+
+        /*
+         * GANTI URL DI BAWAH
+         * dengan URL GitHub / portfolio Anda.
+         */
+
+        const profileURL =
+            "https://github.com/USERNAME";
+
+
+        new QRCode(
+            document.getElementById("qrcode"),
+            {
+                text: profileURL,
+
+                width: 68,
+                height: 68,
+
+                colorDark: "#07111f",
+                colorLight: "#ffffff",
+
+                correctLevel:
+                    QRCode.CorrectLevel.H
+            }
+        );
+
+    </script>
 
 </body>
 </html>
